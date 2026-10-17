@@ -15,8 +15,6 @@ const navLinks = [
   { href: "/", label: "Início" },
   { href: "/sobre", label: "Sobre" },
   { href: "/elenco", label: "Elenco" },
-  { href: "/galeria", label: "Galeria" },
-  { href: "/contato", label: "Contato" },
 ];
 
 export function Header() {
@@ -24,77 +22,72 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-primary text-primary-foreground shadow-lg">
-      {/* Top accent bar */}
-      <div className="h-1 w-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo + Brand */}
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[var(--secondary)] text-white shadow-[0_10px_30px_rgba(7,31,51,0.18)] backdrop-blur-md">
+      <div className="section-shell">
+        <div className="flex h-20 items-center justify-between gap-4">
           <Link
             href="/"
-            className="flex items-center gap-3 group transition-opacity hover:opacity-90"
+            className="flex items-center gap-3 transition-opacity duration-200 hover:opacity-95"
           >
-            <div className="relative w-10 h-10 flex-shrink-0">
+            <div className="relative h-16 w-16 shrink-0">
               <Image
-                src="/images/desinibidos-removebg-preview.png"
+                src="/desinibidos-logo-atualizada.png"
                 alt="Desinibidos FC"
                 fill
-                className="object-contain brightness-0 invert"
+                sizes="64px"
+                className="object-contain"
               />
             </div>
-            <div className="hidden sm:flex flex-col leading-tight">
-              <span className="font-extrabold text-base tracking-wide uppercase">
+
+            <div className="hidden flex-col leading-tight sm:flex">
+              <span className="text-base font-black uppercase tracking-[0.2em] text-white">
                 Desinibidos
               </span>
-              <span className="text-xs font-medium text-primary-foreground/70 tracking-widest uppercase">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.34em] text-slate-300">
                 Futebol Clube
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden items-center gap-1 md:flex">
             {navLinks.map(({ href, label }) => {
               const isActive = pathname === href;
+
               return (
                 <Link
                   key={href}
                   href={href}
                   className={cn(
-                    "relative px-4 py-2 text-sm font-semibold rounded-md transition-all duration-200 tracking-wide uppercase",
+                    "relative px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all duration-200",
                     isActive
-                      ? "text-yellow-300"
-                      : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-white/10",
+                      ? "text-[var(--primary)]"
+                      : "text-slate-300 hover:text-white",
+                    "after:absolute after:-bottom-1 after:left-1/2 after:h-0.5 after:w-6 after:-translate-x-1/2 after:rounded-full after:bg-[var(--primary)] after:transition-all after:duration-200",
+                    isActive ? "after:opacity-100" : "after:opacity-0",
                   )}
                 >
                   {label}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-yellow-400 rounded-full" />
-                  )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden items-center md:flex">
             <Button
               asChild
               size="sm"
-              className="bg-yellow-400 text-black font-bold hover:bg-yellow-300 uppercase tracking-wide shadow-md"
+              className="rounded-full uppercase tracking-[0.12em] shadow-[0_14px_30px_rgba(6,123,166,0.28)]"
             >
-              <Link href="/contato">Fale Conosco</Link>
+              <Link href="/contatos">Fale Conosco</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden text-primary-foreground hover:bg-white/10"
+                className="text-white hover:bg-white/10 md:hidden"
                 aria-label="Abrir menu"
               >
                 <Menu className="h-5 w-5" />
@@ -103,65 +96,66 @@ export function Header() {
 
             <SheetContent
               side="right"
-              className="w-72 bg-primary text-primary-foreground border-l border-white/10 p-0"
+              className="w-80 border-l border-white/10 bg-[var(--secondary)] p-0 text-white"
             >
-              {/* Sheet Header */}
-              <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
+              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-8 h-8">
+                  <div className="relative h-12 w-12 shrink-0">
                     <Image
-                      src="/images/desinibidos-removebg-preview.png"
+                      src="/desinibidos-logo-atualizada.png"
                       alt="Desinibidos FC"
                       fill
-                      className="object-contain brightness-0 invert"
+                      sizes="48px"
+                      className="object-contain"
                     />
                   </div>
-                  <span className="font-extrabold text-sm uppercase tracking-wide">
-                    Desinibidos FC
+                  <span className="text-sm font-black uppercase tracking-[0.2em] text-white">
+                    Desinibidos
                   </span>
                 </div>
+
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => setOpen(false)}
-                  className="text-primary-foreground hover:bg-white/10 -mr-2"
+                  className="text-slate-200 hover:bg-white/5"
                 >
                   <X className="h-4 w-4" />
                 </Button>
               </div>
 
-              {/* Sheet Nav */}
-              <nav className="flex flex-col px-4 py-4 gap-1">
+              <nav className="flex flex-col gap-2 px-4 py-5">
                 {navLinks.map(({ href, label }) => {
                   const isActive = pathname === href;
+
                   return (
                     <Link
                       key={href}
                       href={href}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        "flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold uppercase tracking-wide transition-all",
+                        "flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] transition-all duration-200",
                         isActive
-                          ? "bg-white/15 text-yellow-300"
-                          : "text-primary-foreground/80 hover:bg-white/10 hover:text-primary-foreground",
+                          ? "bg-white/8 text-[var(--primary)]"
+                          : "text-slate-300 hover:bg-white/5 hover:text-white",
                       )}
                     >
                       {label}
-                      <ChevronRight className="h-4 w-4 opacity-50" />
+                      <ChevronRight className="h-4 w-4 opacity-60" />
                     </Link>
                   );
                 })}
               </nav>
 
-              <Separator className="bg-white/10 mx-4" />
+              <Separator className="mx-4 bg-white/10" />
 
-              <div className="px-4 py-4">
+              <div className="px-4 py-5">
                 <Button
                   asChild
-                  className="w-full bg-yellow-400 text-black font-bold hover:bg-yellow-300 uppercase tracking-wide"
+                  className="w-full rounded-full uppercase tracking-[0.14em]"
                   onClick={() => setOpen(false)}
                 >
-                  <Link href="/contato">Fale Conosco</Link>
+                  <Link href="/contatos">Fale Conosco</Link>
                 </Button>
               </div>
             </SheetContent>

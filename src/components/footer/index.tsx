@@ -30,12 +30,13 @@ export function Footer() {
               href="/"
               className="flex w-fit items-center gap-3 transition-opacity duration-200 hover:opacity-95"
             >
-              <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/15 bg-white/5">
+              <div className="relative h-12 w-12 shrink-0">
                 <Image
-                  src={assetPath("/desinibidos-logo.png")}
+                  src={assetPath("/desinibidos-logo-atualizada.png")}
                   alt="Desinibidos FC"
                   fill
-                  className="object-contain p-1"
+                  sizes="48px"
+                  className="object-contain"
                 />
               </div>
 
@@ -50,8 +51,7 @@ export function Footer() {
             </Link>
 
             <p className="max-w-xs text-sm leading-relaxed text-slate-300">
-              Paixão, garra e muita bola no pé. Somos o Desinibidos FC, unidos
-              dentro e fora dos gramados.
+              A amizade nos une, o futebol nos reúne e a resenha nunca acaba!
             </p>
 
             <div className="mt-1 flex items-center gap-2">

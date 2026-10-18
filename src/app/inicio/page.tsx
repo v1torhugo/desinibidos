@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import { assetPath } from "@/lib/asset-path";
 
 import { HeroBackground } from "@/components/inicio/hero-background";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const highlights = [
@@ -33,7 +32,8 @@ export default function Home() {
     <main className="flex flex-col items-center">
       <section className="relative isolate w-full overflow-hidden bg-[var(--secondary)] text-white">
         <HeroBackground />
-        <div className="section-shell relative py-20 sm:py-24 lg:py-28">
+        {/* Preserva a altura do banner com o espaço antes ocupado pelos botões. */}
+        <div className="section-shell relative pt-20 pb-[13.75rem] sm:pt-24 sm:pb-44 lg:pt-28 lg:pb-48">
           <div className="flex justify-center text-center">
             <div className="w-full max-w-2xl">
               <h1 className="text-4xl font-black uppercase tracking-[-0.06em] text-white sm:text-5xl lg:text-7xl">
@@ -41,28 +41,10 @@ export default function Home() {
               </h1>
 
               <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-slate-100 sm:text-lg">
-                Bem-vindo ao portal oficial do Desinibidos FC. Mais do que um
-                time, uma identidade forte, tradicional e moderna, construída
-                com garra, organização e paixão pelo futebol.
+                Bem-vindo ao portal oficial do Desinibidos FC.
+                <br />A amizade nos une, o futebol nos reúne e a resenha nunca
+                acaba!
               </p>
-
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Button
-                  size="lg"
-                  asChild
-                  className="rounded-full uppercase tracking-[0.12em]"
-                >
-                  <Link href="/elenco">Ver elenco</Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="rounded-full uppercase tracking-[0.12em]"
-                >
-                  <Link href="/contatos">Nossa história</Link>
-                </Button>
-              </div>
             </div>
           </div>
         </div>

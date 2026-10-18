@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { assetPath } from "@/lib/asset-path";
 
 const defaultPhoto = "/elenco/perfil-padrao.svg";
 
@@ -16,7 +17,7 @@ export function MemberPhoto({ name, photo }: MemberPhotoProps) {
 
   return (
     <Image
-      src={source}
+      src={assetPath(source)}
       alt={source === defaultPhoto ? "Imagem padrão de integrante do elenco" : `Foto de ${name}`}
       fill
       sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"

@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { MemberPhoto } from "@/components/elenco/member-photo";
 import { elenco } from "@/data/elenco";
+import { assetPath } from "@/lib/asset-path";
 
 export const metadata: Metadata = {
   title: "Elenco | Desinibidos Futebol Clube",
@@ -29,7 +30,7 @@ export default function ElencoPage() {
             </p>
           </div>
           <Image
-            src="/desinibidos-logo-atualizada.png"
+            src={assetPath("/desinibidos-logo-atualizada.png")}
             alt=""
             width={160}
             height={160}

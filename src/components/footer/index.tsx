@@ -4,6 +4,7 @@ import { Instagram, MapPin, Mail, Phone } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { assetPath } from "@/lib/asset-path";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -31,7 +32,7 @@ export function Footer() {
             >
               <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/15 bg-white/5">
                 <Image
-                  src="/desinibidos-logo.png"
+                  src={assetPath("/desinibidos-logo.png")}
                   alt="Desinibidos FC"
                   fill
                   className="object-contain p-1"

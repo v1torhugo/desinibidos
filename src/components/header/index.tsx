@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { assetPath } from "@/lib/asset-path";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -18,7 +19,7 @@ const navLinks = [
 ];
 
 export function Header() {
-  const pathname = usePathname();
+  const pathname = usePathname().replace(/\/$/, "") || "/";
   const [open, setOpen] = useState(false);
 
   return (
@@ -31,7 +32,7 @@ export function Header() {
           >
             <div className="relative h-16 w-16 shrink-0">
               <Image
-                src="/desinibidos-logo-atualizada.png"
+                src={assetPath("/desinibidos-logo-atualizada.png")}
                 alt="Desinibidos FC"
                 fill
                 sizes="64px"
@@ -102,7 +103,7 @@ export function Header() {
                 <div className="flex items-center gap-3">
                   <div className="relative h-12 w-12 shrink-0">
                     <Image
-                      src="/desinibidos-logo-atualizada.png"
+                      src={assetPath("/desinibidos-logo-atualizada.png")}
                       alt="Desinibidos FC"
                       fill
                       sizes="48px"

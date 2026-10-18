@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { assetPath } from "@/lib/asset-path";
 
 const photos = [
   {
@@ -32,7 +33,7 @@ export function HeroBackground() {
         {photos.map((photo, index) => (
           <Image
             key={photo.src}
-            src={photo.src}
+            src={assetPath(photo.src)}
             alt=""
             fill
             priority={index === 0}

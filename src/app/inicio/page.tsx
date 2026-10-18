@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { assetPath } from "@/lib/asset-path";
 
 import { HeroBackground } from "@/components/inicio/hero-background";
 import { Button } from "@/components/ui/button";
@@ -90,7 +91,7 @@ export default function Home() {
               <div className="relative h-52 w-full overflow-hidden bg-[var(--muted)]">
                 {item.image ? (
                   <Image
-                    src={item.image}
+                    src={assetPath(item.image)}
                     alt={item.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
